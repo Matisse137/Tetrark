@@ -1,0 +1,15 @@
+<div class="gallery">
+    {{#each data}}
+        <div class="gallery_elt">
+            <img src="{{this.image}}" alt="{{this.title}}">
+
+            <h2>{{this.title}}</h2>
+
+            <p>{{this.description}}</p>
+
+            <div class="link_button">
+                <a href="{{this.link}}">Entrer dans le module</a>
+            </div>
+        </div>
+    {{/each}}
+</div>

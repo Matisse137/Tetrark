@@ -1,0 +1,160 @@
+/* Reset basique */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EEE;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+    background: cadetblue;
+    color: white;
+    flex: 0 0 auto;
+    padding: 0.8rem 1rem; /* Fin mais aéré */
+}
+
+nav {
+    display: flex;            /* Active le mode flexible */
+    align-items: center;      /* Centre verticalement */
+    width: 100%;
+    max-width: 1200px;        /* S'aligne avec le reste du site */
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Le menu (la liste à puces) */
+nav ul {
+    display: flex;       /* Met les <li> à l'horizontale */
+    list-style: none;    /* Retire les puces */
+    margin: 0;
+    padding: 0;
+    gap: 20px;           /* Espace entre les liens */
+}
+
+nav a {
+    color: white;
+    text-decoration: none; /* Retire le souligné */
+    font-weight: 500;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+.wrapper {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    background: cadetblue;
+    color: white;
+    flex: 0 0 auto;
+    padding: 0.8rem 1rem;
+    margin-top: auto;
+
+    /* Alignement interne du footer */
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center;
+    gap: 15px; /* Si tu ajoutes d'autres éléments plus tard */
+}
+
+/* --- GALERIE (GRID SYSTEM) --- */
+.gallery {
+    display: grid;
+    /* C'est ici que la magie opère : 3 colonnes de largeur égale (1 fraction) */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; /* Espace entre les cartes (horizontal et vertical) */
+}
+
+/* Style de la carte (Card) */
+.gallery_elt {
+    background: white; /* Fond blanc pour ressortir sur le gris #EEE */
+    border-radius: 8px;
+    overflow: hidden;  /* Empêche l'image de dépasser des bords arrondis */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Légère ombre pour le relief */
+
+    /* Flex interne pour gérer la hauteur */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease; /* Animation fluide au survol */
+}
+
+.gallery_elt:hover {
+    transform: translateY(-5px); /* Petit effet de levée au survol */
+}
+
+/* Gestion de l'image */
+.gallery_elt img {
+    width: 100%;
+    height: 200px;      /* Force une hauteur identique pour toutes les images */
+    object-fit: cover;  /* Coupe l'image proprement sans l'écraser */
+}
+
+/* Typographie interne */
+.gallery_elt h2 {
+    margin: 1rem;
+    font-size: 1.2rem;
+    color: cadetblue; /* Rappel de ta couleur principale */
+}
+
+.gallery_elt p {
+    margin: 0 1rem 1rem 1rem;
+    color: #444;
+    line-height: 1.5;
+    flex-grow: 1; /* Pousse le bouton vers le bas si le texte est court */
+}
+
+/* Le bouton */
+.link_button {
+    padding: 1rem;
+    margin-top: auto; /* Colle le bouton tout en bas de la carte */
+    text-align: center;
+}
+
+.link_button a {
+    display: inline-block;
+    background-color: cadetblue;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.link_button a:hover {
+    filter: brightness(0.9); /* Fonce légèrement au survol */
+    cursor: pointer;
+}
+
+/* --- RESPONSIVE (BONUS) --- */
+/* Pour éviter que ce soit illisible sur mobile/tablette */
+@media (max-width: 900px) {
+    .gallery {
+        /* Passe à 2 colonnes sur tablette */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        /* Passe à 1 colonne sur mobile */
+        grid-template-columns: 1fr;
+    }
+}

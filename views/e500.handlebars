@@ -1,0 +1,28 @@
+<div class="hero">
+    <h1 style="font-size: 5rem; color: #d35400; margin-bottom: 0;">500</h1>
+
+    <h2>Oups ! Le serveur a craqué</h2>
+
+    <p>Désolé, quelque chose s'est mal passé de notre côté.</p>
+    <p>Nos meilleurs robots sont sur le coup pour réparer ça.</p>
+
+    {{#if error}}
+        <div style="background: #fff0f0; border: 1px solid #ffcccc; color: #c0392b; padding: 10px; margin: 20px auto; max-width: 600px; border-radius: 5px; text-align: left;">
+            <strong>Détail technique :</strong> <br>
+            <code>{{error}}</code>
+        </div>
+    {{/if}}
+
+    <br>
+
+    <a href="/" style="
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;">
+        Retour à l'accueil (et croisons les doigts)
+    </a>
+</div>
