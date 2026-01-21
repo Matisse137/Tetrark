@@ -1,0 +1,5 @@
+{
+  "mod": [
+    { "title": "Quizz de chimie", "image": "/img/module_chimie.png", "description": "Module de quizz pour réviser la chimie.", "link": "/modules/quizz_chimie/" }
+  ]
+}

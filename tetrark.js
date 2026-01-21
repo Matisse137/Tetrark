@@ -10,6 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import chalk from "chalk";
 import modules_router from "./src/routes/modules.js";
+import login_router from "./src/routes/login.js";
 
 // Definition des constantes
 const app = express();
@@ -25,6 +26,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/modules", modules_router);
+app.use("/login", login_router);
 
 // Config handlebars
 app.engine("handlebars", engine())
@@ -62,7 +64,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-/*
 // Initialisation du https
 const httpsOptions = {
     key: fs.readFileSync('./secure/key.pem'),   // La clé privée
@@ -70,7 +71,6 @@ const httpsOptions = {
 };
 
 const server = https.createServer(httpsOptions, app);
-*/
 
 app.listen(PORT, () =>
 {
