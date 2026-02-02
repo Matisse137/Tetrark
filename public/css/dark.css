@@ -1,0 +1,316 @@
+/* Reset basique */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #EEE;
+    color: midnightblue;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1
+{
+    margin: 0;
+    padding: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+    background: cadetblue;
+    color: white;
+    flex: 0 0 auto;
+    padding: 0.2rem 0.6rem;
+}
+
+nav {
+    display: flex;            /* Active le mode flexible */
+    align-items: center;      /* Centre verticalement */
+    width: 100%;
+    max-width: 95%;        /* S'aligne avec le reste du site */
+    margin: 0 auto;
+    gap: 0.8rem;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+
+}
+
+/* Le menu (la liste à puces) */
+nav ul {
+    display: flex;       /* Met les <li> à l'horizontale */
+    list-style: none;    /* Retire les puces */
+    margin: 0;
+    padding: 0;
+    gap: 20px;           /* Espace entre les liens */
+}
+
+nav a {
+    color: white;
+    text-decoration: none; /* Retire le souligné */
+    font-weight: 500;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+.wrapper {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    background: cadetblue;
+    color: white;
+    flex: 0 0 auto;
+    padding: 0.8rem 1rem;
+    margin-top: auto;
+
+    /* Alignement interne du footer */
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center;
+    gap: 15px; /* Si tu ajoutes d'autres éléments plus tard */
+}
+
+/* --- GALERIE (GRID SYSTEM) --- */
+.gallery {
+    display: grid;
+    /* C'est ici que la magie opère : 3 colonnes de largeur égale (1 fraction) */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; /* Espace entre les cartes (horizontal et vertical) */
+}
+
+/* Style de la carte (Card) */
+.gallery_elt {
+    background: white; /* Fond blanc pour ressortir sur le gris #EEE */
+    border-radius: 8px;
+    overflow: hidden;  /* Empêche l'image de dépasser des bords arrondis */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Légère ombre pour le relief */
+
+    /* Flex interne pour gérer la hauteur */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease; /* Animation fluide au survol */
+}
+
+.gallery_elt:hover {
+    transform: translateY(-5px); /* Petit effet de levée au survol */
+}
+
+/* Gestion de l'image */
+.gallery_elt img {
+    width: 100%;
+    height: 200px;      /* Force une hauteur identique pour toutes les images */
+    object-fit: cover;  /* Coupe l'image proprement sans l'écraser */
+}
+
+/* Typographie interne */
+.gallery_elt h2 {
+    margin: 1rem;
+    font-size: 1.2rem;
+    color: cadetblue; /* Rappel de ta couleur principale */
+}
+
+.gallery_elt p {
+    margin: 0 1rem 1rem 1rem;
+    color: #444;
+    line-height: 1.5;
+    flex-grow: 1; /* Pousse le bouton vers le bas si le texte est court */
+}
+
+/* Le bouton */
+.link_button {
+    padding: 1rem;
+    margin-top: auto; /* Colle le bouton tout en bas de la carte */
+    text-align: center;
+}
+
+.link_button a {
+    display: inline-block;
+    background-color: cadetblue;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.link_button a:hover {
+    filter: brightness(0.9); /* Fonce légèrement au survol */
+    cursor: pointer;
+}
+
+/* --- RESPONSIVE (BONUS) --- */
+/* Pour éviter que ce soit illisible sur mobile/tablette */
+@media (max-width: 900px) {
+    .gallery {
+        /* Passe à 2 colonnes sur tablette */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        /* Passe à 1 colonne sur mobile */
+        grid-template-columns: 1fr;
+    }
+}
+
+div.content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+form.login_frame
+{
+    display: flex;
+    background-color: azure;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1px double cadetblue;
+    width: 100%;
+    min-width: 400px;
+    max-width: 600px;
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+    height: 100%;
+    margin: 4.6rem;
+}
+
+.login_elt
+{
+    display: flex;
+    font-size: large;
+    font-color: inherit;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0.2rem 0.4rem ;
+    padding: 1rem 0.4rem;
+}
+
+form.login_frame button
+{
+    background-color: cadetblue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+form.login_frame button:hover
+{
+    filter: brightness(80%);
+}
+
+form.login_frame h2
+{
+    align-self: center;
+    margin: 0.5rem 0;
+}
+
+/* Alignement des outils à droite dans ton nav flex */
+.nav_tools {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Base des menus déroulants */
+.dropdown_item {
+    position: relative;
+}
+
+.dropdown_btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 100;
+    padding: 0.5rem;
+}
+
+/* Affichage au survol */
+.dropdown_item:hover .dropdown_content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Liens et boutons à l'intérieur du menu */
+.dropdown_content a, .dropdown_content button {
+    color: midnightblue;
+    text-decoration: none;
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.dropdown_content a:hover {
+    color: cadetblue;
+}
+
+/* Adaptation du mini-formulaire de login */
+.login_popover {
+    min-width: 200px;
+}
+
+#header_login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+#header_login_form input {
+    border: 1px solid #ccc;
+    padding: 0.4rem;
+    border-radius: 3px;
+}
+
+#header_login_form button {
+    background-color: cadetblue;
+    color: white;
+    text-align: center;
+    padding: 0.4rem;
+    border-radius: 3px;
+}

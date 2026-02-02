@@ -1,8 +1,41 @@
 <header>
     <nav>
-        <div class="logo"><a href="/"><h1>Tetrark</h1></a></div>
+        <div class="logo">
+            <a href="/"><h1>Tetrark</h1></a>
+        </div>
+
         <ul>
             <li><a href="/modules">Modules</a></li>
         </ul>
+
+        <div class="nav_tools">
+            <div class="dropdown_item">
+                <button class="dropdown_btn">Lang</button>
+                <div class="dropdown_content">
+                    <a href="?lang=fr">FR</a>
+                    <a href="?lang=en">EN</a>
+                </div>
+            </div>
+
+            <div class="dropdown_item">
+                <button class="dropdown_btn" id="theme_switcher">Theme</button>
+                <div class="dropdown_content">
+                    <button onclick="change_theme('light')">Light</button>
+                    <button onclick="change_theme('dark')">Dark</button>
+                </div>
+            </div>
+
+            <div class="dropdown_item">
+                {{#if user_auth}}
+                    <button class="dropdown_btn">Account</button>
+                    <div class="dropdown_content">
+                        <a href="/profile">Profile</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                {{else}}
+                    <a href="/login"><button class="dropdown_btn">Login</button></a>
+                {{/if}}
+            </div>
+        </div>
     </nav>
 </header>

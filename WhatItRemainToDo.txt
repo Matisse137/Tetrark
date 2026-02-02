@@ -1,0 +1,23 @@
+\\\\\\\\\\ COTE SERVEUR //////////
+- fonction de selection aleatoire du quiz
+- Single Page pour le select
+- Systeme de liste pour tous les quizz disponibles
+- Finir le systeme de login :
+    - Gerer les droits d'accès aux modules
+    - Restreindre l'accès si non autorisé ( Pas d'envoie d'erreur ), redirection avec messages
+    - Restreindre le spam ( empêcher d'avoir plusieurs tokens pour un appareil)
+    - Gerer la requete avec le header pour l'apparition du bouton login ( faire une fonction de vérif )
+- Faire le schéma pour les quizz
+
+\\\\\\\\\\ COTE HANDLEBARS/CSS //////////
+- Gestion du changement de bouton login ( Mettre une petite icon à la place vers le compte )
+- faire l'interface de création de quizz
+- Faire l'interface de gestion des listes ( avec catégories, nom, tags, etc )
+- Faire le thème sombre + lier a un event les inputs de changement de theme
+
+\\\\\\\\\\ COTE JAVASCRIPT //////////
+- Gestion des jwt lors lors des communications c/s ( utilisation AXIOS ) :
+    - Reception du jwt ( lier avec un evenement )
+    - Enregistrement dans les cookies ( LocalStorage )
+    - Rajouter le token lors de l'envoie pour condirmation de connexion
+- Créer l'event de changement de thème ( éviter le refresh de la page )

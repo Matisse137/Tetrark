@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 import chalk from "chalk";
 import modules_router from "./src/routes/modules.js";
 import login_router from "./src/routes/login.js";
+import User from './src/models/user.js'
 
 // Definition des constantes
 const app = express();
@@ -24,6 +25,7 @@ db_connect().catch((err) => console.log(err));
 // Config initiale
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/modules", modules_router);
 app.use("/login", login_router);
@@ -72,7 +74,7 @@ const httpsOptions = {
 
 const server = https.createServer(httpsOptions, app);
 
-app.listen(PORT, () =>
+server.listen(PORT, () =>
 {
     console.log(`Serveur HTTPS sécurisé lancé sur https://localhost:${PORT}`);
 });

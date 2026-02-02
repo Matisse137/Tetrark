@@ -178,7 +178,7 @@ div.content
     min-height: 100%;
 }
 
-div.login_frame
+form.login_frame
 {
     display: flex;
     background-color: azure;
@@ -193,6 +193,7 @@ div.login_frame
     align-content: center;
     padding: 1rem;
     height: 100%;
+    margin: 4.6rem;
 }
 
 .login_elt
@@ -203,12 +204,11 @@ div.login_frame
     flex-direction: column;
     justify-content: center;
     border-radius: 5px;
-    border: 1px solid cadetblue;
-    margin: 2rem 0.4rem;
+    margin: 0.2rem 0.4rem ;
     padding: 1rem 0.4rem;
 }
 
-div.login_frame button
+form.login_frame button
 {
     background-color: cadetblue;
     color: white;
@@ -220,13 +220,189 @@ div.login_frame button
     width: 100%;
 }
 
-div.login_frame button:hover
+form.login_frame button:hover
 {
     filter: brightness(80%);
 }
 
-div.login_frame h2
+form.login_frame h2
 {
     align-self: center;
+    margin: 0.5rem 0;
+}
 
+
+
+/* Alignement des outils à droite dans ton nav flex */
+.nav_tools {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Base des menus déroulants */
+.dropdown_item {
+    position: relative;
+}
+
+.dropdown_btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 100;
+    padding: 0.5rem;
+}
+
+/* Affichage au survol */
+.dropdown_item:hover .dropdown_content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Liens et boutons à l'intérieur du menu */
+.dropdown_content a, .dropdown_content button {
+    color: midnightblue;
+    text-decoration: none;
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.dropdown_content a:hover {
+    color: cadetblue;
+}
+
+/* Adaptation du mini-formulaire de login */
+.login_popover {
+    min-width: 200px;
+}
+
+#header_login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+#header_login_form input {
+    border: 1px solid #ccc;
+    padding: 0.4rem;
+    border-radius: 3px;
+}
+
+#header_login_form button {
+    background-color: cadetblue;
+    color: white;
+    text-align: center;
+    padding: 0.4rem;
+    border-radius: 3px;
+}
+
+/* --- PAGE QUIZ CHIMIE (Dashboard) --- */
+
+.chim_flex {
+    /* On utilise Grid pour placer le titre au dessus et les 3 boîtes en dessous */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    gap: 2rem; /* Espace entre les éléments */
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto; /* Centré avec de la marge en haut/bas */
+    padding: 0 1rem;
+}
+
+/* Le Titre principal prend toute la largeur */
+.chim_flex h1 {
+    grid-column: 1 / -1; /* S'étend de la 1ère ligne à la dernière (toute la largeur) */
+    text-align: center;
+    color: cadetblue;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Style commun pour les 3 cartes (Création, Liste, Random) */
+.create_chim, .list_chim, .random_chim {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Même ombre que ton login */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Pousse le bouton vers le bas */
+    text-align: center;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 250px; /* Hauteur minimale pour que ce soit joli */
+    border: 1px solid transparent; /* Prépare la bordure au survol */
+}
+
+/* Effet au survol des cartes */
+.create_chim:hover, .list_chim:hover, .random_chim:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-color: cadetblue;
+}
+
+/* Titres des cartes */
+.chim_flex h2 {
+    color: midnightblue;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Paragraphes (au cas où tu ajoutes du texte dans les <p>) */
+.chim_flex p {
+    color: #666;
+    flex-grow: 1; /* Prend l'espace disponible */
+    margin-bottom: 1.5rem;
+}
+
+/* Les liens transformés en boutons */
+.chim_flex a {
+    display: inline-block;
+    background-color: cadetblue;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.chim_flex a:hover {
+    background-color: #4a8b8d; /* Une version un peu plus foncée de cadetblue */
+}
+
+/* --- RESPONSIVE CHIMIE --- */
+
+/* Sur tablette/petit écran : le titre reste en haut, mais on passe à 1 colonne */
+@media (max-width: 800px) {
+    .chim_flex {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        max-width: 500px; /* On limite la largeur pour pas que ce soit trop large */
+    }
 }

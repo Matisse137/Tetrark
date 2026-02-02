@@ -1,0 +1,20 @@
+<div class="wrapper content">
+    <form class="login_frame" method="post" action="/login/register">
+        <h2 class="login-flex">Nouveau compte</h2>
+        <div class="login_elt">
+            <label class="t_label" for="nickname">Pseudo</label>
+            <input id="nickname" class="t_input" name="name" maxlength="20">
+        </div>
+        <div class="login_elt">
+            <label class="t_label" for="email">email</label>
+            <input type="email" id="email" class="t_input" maxlength="50" name="email" size="30">
+        </div>
+        <div class="login_elt">
+            <label class="t_label" for="password">mot de passe</label>
+            <input type="password" id="password" class="t_input" name="password" autocomplete="on" maxlength="20">
+        </div>
+        <button name="login_submit" type="submit">
+            Confirmer
+        </button>
+    </form>
+</div>

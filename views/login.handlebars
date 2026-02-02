@@ -1,5 +1,5 @@
 <div class="wrapper content">
-    <div class="login_frame">
+    <form class="login_frame" method="post">
         <h2 class="login-flex">Authentification</h2>
         <div class="login_elt">
             <label class="t_label" for="email">email</label>
@@ -9,8 +9,9 @@
             <label class="t_label" for="password">mot de passe</label>
             <input type="password" id="password" class="t_input" name="password" autocomplete="on" maxlength="20">
         </div>
+        <a href="/login/register" class="sign">Je n'ai pas de compte !</a>
         <button name="login_submit" type="submit">
             Confirmer
         </button>
-    </div>
+    </form>
 </div>
