@@ -1,36 +1,45 @@
 <div class="container mt-5">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/modules/projects">Projets</a></li>
-            <li class="breadcrumb-item active">{{project.title}}</li>
-        </ol>
-    </nav>
+    <header class="project-header border-bottom pb-4 mb-4">
+        <h1 class="display-4">{{project.title}}</h1>
 
-    <article class="project-content mt-4">
-        <header class="mb-5 border-bottom pb-3">
-            <h1 class="display-4">{{project.title}}</h1>
-            <div class="d-flex justify-content-between align-items-center">
-                <span class="badge bg-info text-dark">{{project.category}}</span>
-                <small class="text-muted">Mis à jour le : {{project.updatedAt}}</small>
-            </div>
-        </header>
+        <div class="d-flex align-items-center gap-3 mt-2">
+            <span class="badge bg-primary">{{project.category}}</span>
 
-        <div class="markdown-body">
-            {{{project.html_content}}}
+            {{#if project.github_repo}}
+                <span class="badge bg-dark border border-success text-success">
+                    GitHub: {{github.latest_version}}
+                </span>
+
+                <form action="https://github.com/{{project.github_repo}}/tree/" method="GET" class="d-flex gap-2">
+                    <select name="" onchange="window.location.href='https://github.com/{{project.github_repo}}/tree/' + this.value" class="form-select form-select-sm bg-dark text-light border-secondary">
+                        <option value="main">Branches...</option>
+                        {{#each github.branches}}
+                            <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            {{/if}}
         </div>
+    </header>
 
-        {{#if project.versions.length}}
-            <section class="mt-5 pt-4 border-top">
-                <h3>Historique des versions (Monitoring)</h3>
-                <ul class="list-group list-group-flush">
-                    {{#each project.versions}}
-                        <li class="list-group-item">
-                            <strong>{{this.number}}</strong> <small>({{this.date}})</small>
-                            <p class="mb-0">{{this.changelog}}</p>
-                        </li>
-                    {{/each}}
-                </ul>
-            </section>
-        {{/if}}
-    </article>
+    <div class="project-body mb-5">
+        {{{html_content}}}
+    </div>
+
+    {{#if project.versions.length}}
+        <footer class="versions-monitoring mt-5 pt-4 border-top">
+            <h3>Historique des versions</h3>
+            <div class="list-group">
+                {{#each project.versions}}
+                    <div class="list-group-item bg-dark text-light border-secondary mb-2">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{this.number}}</h5>
+                            <small>{{this.date}}</small>
+                        </div>
+                        <p class="mb-1 text-muted">{{this.changelog}}</p>
+                    </div>
+                {{/each}}
+            </div>
+        </footer>
+    {{/if}}
 </div>
