@@ -1,0 +1,45 @@
+<div class="content">
+    <div class="chim_flex">
+        <h1 style="color: cadetblue; margin-bottom: 2rem;">LISTE DES QUIZ PAR CATÉGORIE</h1>
+    </div>
+
+    <div style="width: 100%; max-width: 800px; margin: 0 auto; padding: 1rem;">
+
+        {{#each categories}}
+
+            <div style="background-color: cadetblue; color: white; padding: 12px 20px; border-radius: 6px 6px 0 0; margin-top: 1.5rem; font-size: 1.2rem; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                {{category_name}}
+            </div>
+
+            <div style="background-color: white; border: 1px solid #ccc; border-top: none; border-radius: 0 0 6px 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+                {{#each quizz}}
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee;">
+
+                        <div style="font-weight: bold; color: midnightblue; font-size: 1.1rem;">
+                            {{quizz_name}}
+                        </div>
+
+                        <a href="/modules/quizz_chimie/select/{{_id}}"
+                           style="background-color: cadetblue; color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; transition: filter 0.2s;"
+                           onmouseover="this.style.filter='brightness(0.9)'"
+                           onmouseout="this.style.filter='brightness(1)'">
+                            LANCER
+                        </a>
+                    </div>
+                {{else}}
+                    <div style="padding: 15px 20px; color: #888; font-style: italic; text-align: center;">
+                        Aucun quiz n'a encore été ajouté dans cette catégorie.
+                    </div>
+                {{/each}}
+
+            </div>
+
+        {{else}}
+            <div style="text-align: center; padding: 2rem; background: white; border-radius: 8px; margin-top: 2rem;">
+                <p>Aucune catégorie n'est disponible.</p>
+            </div>
+        {{/each}}
+
+    </div>
+</div>

@@ -1,3 +1,6 @@
+\\\\\\\\\\ SUJET PRINCIPAL //////////
+- Système id avec le select en SPA (ia gen priorisé)
+
 \\\\\\\\\\ COTE SERVEUR //////////
 - fonction de selection aleatoire du quiz
 - Single Page pour le select
@@ -5,9 +8,14 @@
 - Finir le systeme de login :
     - Gerer les droits d'accès aux modules
     - Restreindre l'accès si non autorisé ( Pas d'envoie d'erreur ), redirection avec messages
-    - Restreindre le spam ( empêcher d'avoir plusieurs tokens pour un appareil)
+    - Restreindre le spam ( empêcher d'avoir plusieurs tokens pour un appareil )
     - Gerer la requete avec le header pour l'apparition du bouton login ( faire une fonction de vérif )
+- Gérer les requêtes post si création d'une catégorie et update pour un quizz
+
+||||||||||||||| FAIT |||||||||||||||
 - Faire le schéma pour les quizz
+- Finir les requetes post et patch pour la création de quizz, ne pas oublier de tester sur postman
+
 
 \\\\\\\\\\ COTE HANDLEBARS/CSS //////////
 - Gestion du changement de bouton login ( Mettre une petite icon à la place vers le compte )
@@ -15,9 +23,14 @@
 - Faire l'interface de gestion des listes ( avec catégories, nom, tags, etc )
 - Faire le thème sombre + lier a un event les inputs de changement de theme
 
+||||||||||||||| FAIT |||||||||||||||
+
 \\\\\\\\\\ COTE JAVASCRIPT //////////
 - Gestion des jwt lors lors des communications c/s ( utilisation AXIOS ) :
     - Reception du jwt ( lier avec un evenement )
     - Enregistrement dans les cookies ( LocalStorage )
     - Rajouter le token lors de l'envoie pour condirmation de connexion
 - Créer l'event de changement de thème ( éviter le refresh de la page )
+- Créer la fonction de mélange pour les questions des quizz
+
+||||||||||||||| FAIT |||||||||||||||

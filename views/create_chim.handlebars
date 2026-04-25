@@ -1,3 +1,114 @@
-<p>
-    Rinoshieldsssss
-</p>
+<div class="content">
+    <h1 style="color: cadetblue; margin-bottom: 2rem;">Administration du Module Chimie</h1>
+
+    <form class="login_frame" id="quizz_form" onsubmit="return false;" style="max-width: 900px; width: 95%;">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+
+            <div style="border-right: 1px solid #ddd; padding-right: 1.5rem;">
+                <h3 style="color: cadetblue; border-bottom: 2px solid cadetblue; padding-bottom: 5px;">1. Localisation</h3>
+
+                <div class="login_elt">
+                    <label>CATÉGORIE</label>
+                    <input type="text" id="category_name" placeholder="ex: Chimie Organique" style="border: 1px solid cadetblue;">
+                </div>
+
+                <div class="login_elt">
+                    <label>NOM DU QUIZZ</label>
+                    <input type="text" id="quizz_name" placeholder="ex: Les Alcanes">
+                </div>
+
+                <p style="font-size: 0.8rem; color: #666; margin-top: 1rem;">
+                    * Pour modifier, saisissez exactement les noms existants.
+                </p>
+            </div>
+
+            <div>
+                <h3 style="color: cadetblue; border-bottom: 2px solid cadetblue; padding-bottom: 5px;">2. Détails Question</h3>
+
+                <div class="login_elt">
+                    <label>IDENTIFIANT</label>
+                    <input type="text" id="quest_name" placeholder="ex: Q1">
+                </div>
+
+                <div class="login_elt">
+                    <label>CONTENU / ÉNONCÉ</label>
+                    <textarea id="quest_content" rows="3" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit;" placeholder="Quelle est la formule..."></textarea>
+                </div>
+
+                <div class="login_elt">
+                    <label>RÉPONSE</label>
+                    <input type="text" id="resp" placeholder="ex: CnH2n+2">
+                </div>
+
+                <div class="login_elt" style="flex-direction: row; gap: 10px; align-items: center; background: #f0f8f8; padding: 10px; border-radius: 5px;">
+                    <input type="checkbox" id="is_correct" style="width: 18px; height: 18px;">
+                    <label for="is_correct" style="margin:0; font-weight: bold;">Réponse correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="response_message" style="margin: 1rem 0; padding: 1rem; border-radius: 5px; text-align: center; display: none;"></div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button type="button" onclick="process_request('POST')" style="font-weight: bold;">+ CRÉER / AJOUTER</button>
+                <button type="button" onclick="process_request('PATCH')" style="background-color: midnightblue; font-weight: bold;">✎ MODIFIER</button>
+            </div>
+            <button type="button" onclick="reset_form()" style="background-color: transparent; color: #666; border: 1px solid #ccc; padding: 5px;">Vider les champs</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const API_URL = 'https://127.0.0.1:3000/modules/quizz_chimie/create';
+
+    async function process_request(method) {
+        const quizz_data = {
+            category_name: document.getElementById('category_name').value,
+            quizz_name: document.getElementById('quizz_name').value,
+            quest_name: document.getElementById('quest_name').value,
+            quest_content: document.getElementById('quest_content').value,
+            resp: document.getElementById('resp').value,
+            is_correct: document.getElementById('is_correct').checked
+        };
+
+        if (!quizz_data.category_name || !quizz_data.quizz_name || !quizz_data.quest_content) {
+            return show_status("Champs requis manquants !", "error");
+        }
+
+        try {
+            console.log(`ATTEMPTING ${method}...`);
+            const res = await axios({ method, url: API_URL, data: quizz_data });
+
+            if(res) {
+                console.log(`SUCCESS ${method}`);
+                show_status(`Opération réussie (${method})`, "success");
+
+                // On vide la partie question pour enchaîner
+                document.getElementById('quest_name').value = "";
+                document.getElementById('quest_content').value = "";
+                document.getElementById('resp').value = "";
+                document.getElementById('is_correct').checked = false;
+            }
+        } catch (e) {
+            console.log(`ERROR ${method}`);
+            show_status("Erreur : " + (e.response ? JSON.stringify(e.response.data) : e.toString()), "error");
+        }
+    }
+
+    function show_status(text, type) {
+        const box = document.getElementById('response_message');
+        box.innerText = text;
+        box.style.display = "block";
+        box.style.backgroundColor = type === "success" ? "#d4edda" : "#f8d7da";
+        box.style.color = type === "success" ? "#155724" : "#721c24";
+        box.style.border = type === "success" ? "1px solid #c3e6cb" : "1px solid #f5c6cb";
+        setTimeout(() => { box.style.display = "none"; }, 5000);
+    }
+
+    function reset_form() {
+        if(confirm("Tout effacer ?")) document.getElementById('quizz_form').reset();
+    }
+</script>
