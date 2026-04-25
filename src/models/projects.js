@@ -21,5 +21,5 @@ const project_schema = new mongoose.Schema({
 	is_public: { type: Boolean, default: false }
 }, { timestamps: true, collection: "projects" });
 
-const Project = mongoose.model('projects', project_schema);
-export default Project;
+const Projects = mongoose.model('projects', project_schema);
+export default Projects;

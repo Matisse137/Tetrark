@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import path from "path";
 import {fileURLToPath} from "url";
 import q_chimie_router from "./sub_modules/quizz_chimie.js";
-import projects_router from "./sub_modules/project.js";
+import projects_router from "./sub_modules/projects.js";
 //import { authentification } from "../middlewares/authentification.js";
 
 const __filename = fileURLToPath(import.meta.url);
