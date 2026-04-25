@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Carnet de Projets</h1>
+    <p class="text-center text-muted">Répertoire des idées, développements et archives.</p>
+
+    <div class="row">
+        {{#each projects_par_categorie}}
+            <div class="col-12 mt-4">
+                <h2 class="border-bottom pb-2">{{@key}}</h2>
+                <div class="row">
+                    {{#each this}}
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.title}}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{this.category}}</h6>
+                                    <p class="card-text text-truncate">{{this.description}}</p>
+                                    <a href="/modules/projects/view/{{this.slug}}" class="btn btn-primary btn-sm">Consulter</a>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
