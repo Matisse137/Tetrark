@@ -1,9 +1,9 @@
 import express from 'express';
-import Projects from "../../models/projects.js";
+import Project from "../../models/projects.js"; // Ajout du 's'
 import { marked } from 'marked';
 import slugify from 'slugify';
 
-const project_router = express.Router();
+const projects_router = express.Router();
 
 // --- HELPER GITHUB ---
 async function get_github_info(repo_path) {
@@ -25,7 +25,7 @@ async function get_github_info(repo_path) {
 }
 
 // --- 1. ROUTE PRINCIPALE (Liste des projets) ---
-project_router.get('/', async (req, res) => {
+projects_router.get('/', async (req, res) => {
 	try {
 		// On récupère tous les projets publics
 		const projects_db = await Projects.find({ is_public: true }).lean();
@@ -48,7 +48,7 @@ project_router.get('/', async (req, res) => {
 
 // --- 2. ROUTE D'AFFICHAGE DU FORMULAIRE DE CRÉATION ---
 // Ajoute ton middleware d'authentification ici plus tard !
-project_router.get('/create', (req, res) => {
+projects_router.get('/create', (req, res) => {
 	res.render('create_project', {
 		title: "Nouveau Projet | Tetrark",
 		css_file: "/css/classic.css"
@@ -56,7 +56,7 @@ project_router.get('/create', (req, res) => {
 });
 
 // --- 3. ROUTE DE TRAITEMENT DE LA CRÉATION (POST) ---
-project_router.post('/create', async (req, res) => {
+projects_router.post('/create', async (req, res) => {
 	try {
 		const { title, category, description, content, github_repo, is_public } = req.body;
 		const slug = slugify(title, { lower: true, strict: true });
@@ -74,7 +74,7 @@ project_router.post('/create', async (req, res) => {
 });
 
 // --- 4. ROUTE D'AFFICHAGE DU DÉTAIL D'UN PROJET (SEO) ---
-project_router.get('/view/:slug', async (req, res) => {
+projects_router.get('/view/:slug', async (req, res) => {
 	try {
 		const project = await Projects.findOne({ slug: req.params.slug, is_public: true }).lean();
 		if (!project) return res.status(404).render('e404', { css_file: "/css/classic.css" });
@@ -95,4 +95,4 @@ project_router.get('/view/:slug', async (req, res) => {
 	}
 });
 
-export default project_router;
+export default projects_router;
