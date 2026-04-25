@@ -407,72 +407,48 @@ form.login_frame h2
     }
 }
 
-/* --- MODULE PROJETS & MARKDOWN --- */
+/* --- MODULE PROJETS (MARKDOWN & MONITORING) --- */
 
-.project-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Rendu Markdown (Contenu généré) */
 .markdown-body {
-    line-height: 1.6;
-    color: #e1e1e1;
+    line-height: 1.7;
+    color: #f0f0f0;
 }
 
-.markdown-body h1, .markdown-body h2 {
-    border-bottom: 1px solid #30363d;
-    padding-bottom: 0.3em;
-    margin-top: 1.5em;
-    color: var(--main-color); /* Utilisation de ta variable de thème si elle existe */
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #007bff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.3rem;
+}
+
+.markdown-body p { margin-bottom: 1rem; }
+
+.markdown-body pre {
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    overflow-x: auto;
 }
 
 .markdown-body code {
-    background-color: rgba(110, 118, 129, 0.4);
-    padding: 0.2em 0.4em;
-    border-radius: 6px;
-    font-family: 'Courier New', Courier, monospace;
+    background: rgba(255,255,255,0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
 }
 
-.markdown-body pre {
-    background-color: #161b22;
-    padding: 16px;
-    border-radius: 8px;
-    overflow: auto;
-    border: 1px solid #30363d;
-}
-
-/* Monitoring de version */
+/* Cartes de Monitoring */
 .version-card {
-    background: #0d1117;
-    border-left: 4px solid #238636; /* Vert pour évoquer la stabilité */
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 0 8px 8px 0;
+    background: rgba(0,0,0,0.2);
+    border-left: 3px solid #28a745;
+    padding: 1rem;
+    border-radius: 0 4px 4px 0;
 }
 
 .version-number {
     font-weight: bold;
-    color: #58a6ff;
-    font-family: monospace;
-}
-
-/* GitHub Integration UI */
-.github-badge {
-    display: inline-flex;
-    align-items: center;
-    background: #21262d;
-    border: 1px solid #30363d;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-}
-
-.github-badge .dot {
-    height: 8px;
-    width: 8px;
-    background-color: #3fb950;
-    border-radius: 50%;
-    margin-right: 8px;
+    color: #17a2b8;
+    font-size: 1.1rem;
 }

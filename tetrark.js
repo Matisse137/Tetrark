@@ -31,7 +31,15 @@ app.use("/modules", modules_router);
 app.use("/login", login_router);
 
 // Config handlebars
-app.engine("handlebars", engine())
+app.engine("handlebars", engine(
+    {
+        extname: '.handlebars',
+        defaultLayout: 'main',
+        helpers: {
+            // Ajoute ce helper pour comparer les valeurs dans tes vueseq: (a, b) => a === b
+        }
+    }
+));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 

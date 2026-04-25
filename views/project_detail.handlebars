@@ -7,12 +7,12 @@
 
             {{#if project.github_repo}}
                 <span class="badge bg-dark border border-success text-success">
-                    GitHub: {{github.latest_version}}
+                    Dernière Release: {{github.tag}}
                 </span>
 
-                <form action="https://github.com/{{project.github_repo}}/tree/" method="GET" class="d-flex gap-2">
-                    <select name="" onchange="window.location.href='https://github.com/{{project.github_repo}}/tree/' + this.value" class="form-select form-select-sm bg-dark text-light border-secondary">
-                        <option value="main">Branches...</option>
+                <form action="https://github.com/{{project.github_repo}}/tree/" method="GET" class="d-flex align-items-center gap-2">
+                    <select onchange="if(this.value) window.location.href='https://github.com/{{project.github_repo}}/tree/' + this.value" class="form-select form-select-sm bg-dark text-light border-secondary">
+                        <option value="">Accéder aux branches...</option>
                         {{#each github.branches}}
                             <option value="{{this.name}}">{{this.name}}</option>
                         {{/each}}
@@ -22,24 +22,22 @@
         </div>
     </header>
 
-    <div class="project-body mb-5">
-        {{{html_content}}}
+    <div class="markdown-body mb-5">
+        {{{rendered_html}}}
     </div>
 
     {{#if project.versions.length}}
-        <footer class="versions-monitoring mt-5 pt-4 border-top">
-            <h3>Historique des versions</h3>
-            <div class="list-group">
-                {{#each project.versions}}
-                    <div class="list-group-item bg-dark text-light border-secondary mb-2">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{this.number}}</h5>
-                            <small>{{this.date}}</small>
-                        </div>
-                        <p class="mb-1 text-muted">{{this.changelog}}</p>
+        <section class="monitoring-section mt-5 pt-4 border-top">
+            <h3 class="mb-4">Suivi des versions</h3>
+            {{#each project.versions}}
+                <div class="version-card mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="version-number">{{this.number}}</span>
+                        <small class="text-muted">{{this.date}}</small>
                     </div>
-                {{/each}}
-            </div>
-        </footer>
+                    <p class="mt-2 mb-0">{{this.changelog}}</p>
+                </div>
+            {{/each}}
+        </section>
     {{/if}}
 </div>
