@@ -1,5 +1,16 @@
 {
   "mod": [
-    { "title": "Quizz de chimie", "image": "/img/module_chimie.png", "description": "Module de quizz pour réviser la chimie.", "link": "/modules/quizz_chimie/" }
+    {
+      "title": "Quizz de chimie",
+      "image": "/img/module_chimie.png",
+      "description": "Module de quizz pour réviser la chimie.",
+      "link": "/modules/quizz_chimie/" },
+    {
+      "id": "projects_tracker",
+      "name": "Carnet de Projets",
+      "description": "Suivi de mes projets passés, actuels et futurs.",
+      "icon": "img/module_projets.png",
+      "route": "/modules/projects"
+    }
   ]
 }
